@@ -426,7 +426,7 @@
             remove(activeOption, event)
           }
         } else add(activeOption, event)
-        searchText = ``
+        if (resetFilterOnAdd) searchText = `` // reset search string on selection
       } else if (allowUserOptions && searchText.length > 0) {
         // user entered text but no options match, so if allowUserOptions is truthy, we create new option
         add(searchText as Option, event)

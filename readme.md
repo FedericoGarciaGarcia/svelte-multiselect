@@ -1,36 +1,11 @@
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/janosh/svelte-multiselect/main/static/favicon.svg" alt="Svelte MultiSelect" height="60" width="60">
-  <br class="hide-in-docs">&ensp;Svelte MultiSelect
+  <br class="hide-in-docs">&ensp;<a href="https://github.com/janosh/svelte-multiselect">Svelte MultiSelect</a> + Updates
 </h1>
 
-<h4 align="center">
+## 🚀 &thinsp; Updates
 
-[![Tests](https://github.com/janosh/svelte-multiselect/actions/workflows/test.yml/badge.svg)](https://github.com/janosh/svelte-multiselect/actions/workflows/test.yml)
-[![GitHub Pages](https://github.com/janosh/svelte-multiselect/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/janosh/svelte-multiselect/actions/workflows/gh-pages.yml)
-[![NPM version](https://img.shields.io/npm/v/svelte-multiselect?logo=NPM&color=purple)](https://npmjs.com/package/svelte-multiselect)
-[![Needs Svelte version](https://img.shields.io/npm/dependency-version/svelte-multiselect/peer/svelte?color=teal&logo=Svelte&label=Svelte)](https://github.com/sveltejs/svelte/blob/master/packages/svelte/CHANGELOG.md)
-[![REPL](https://img.shields.io/badge/Svelte-REPL-blue?label=Try%20it!)](https://svelte.dev/repl/a5a14b8f15d64cb083b567292480db05)
-[![Open in StackBlitz](https://img.shields.io/badge/Open%20in-StackBlitz-darkblue?logo=stackblitz)](https://stackblitz.com/github/janosh/svelte-multiselect)
-
-</h4>
-
-<p align="center"><strong>
-  Keyboard-friendly, accessible and highly customizable multi-select component.
-  <a class="hide-in-docs" href="https://janosh.github.io/svelte-multiselect">View the docs</a>
-</strong></p>
-
-<slot name="examples" />
-
-## 💡 &thinsp; Features
-
-- **Bindable:** `bind:selected` gives you an array of the currently selected options. Thanks to Svelte's 2-way binding, it can also control the component state externally through assignment `selected = ['foo', 42]`.
-- **Keyboard friendly** for mouse-less form completion
-- **No run-time deps:** needs only Svelte as dev dependency
-- **Dropdowns:** scrollable lists for large numbers of options
-- **Searchable:** start typing to filter options
-- **Tagging:** selected options are listed as tags within the input
-- **Single / multiple select:** pass `maxSelect={1, 2, 3, ...}` prop to restrict the number of selectable options
-- **Configurable:** see props
+- **Bug Fix 1:** Search text won't clear when `resetFilterOnAdd={false}`
 
 ## 🧪 &thinsp; Coverage
 
@@ -178,7 +153,7 @@ These are the core props you'll use in most cases:
    Text shown when no options are selected.
 
 1. ```ts
-   disabled: boolean = false
+   disabled: boolean = false;
    ```
 
    Disables the component. Users can't interact with it, but it's still rendered.
@@ -192,13 +167,13 @@ These are the core props you'll use in most cases:
 ### Commonly Used Props
 
 1. ```ts
-   searchText: string = `` // bindable
+   searchText: string = ``; // bindable
    ```
 
    The text user entered to filter options. Bindable for external control.
 
 1. ```ts
-   open: boolean = false // bindable
+   open: boolean = false; // bindable
    ```
 
    Whether the dropdown is visible. Bindable for external control.
@@ -210,19 +185,19 @@ These are the core props you'll use in most cases:
    Whether users can create new options by typing. `true` = add to selected only, `'append'` = add to both options and selected.
 
 1. ```ts
-   allowEmpty: boolean = false
+   allowEmpty: boolean = false;
    ```
 
    Whether to allow the component to exist with no options. If `false`, shows console error when no options provided (unless `loading`, `disabled`, or `allowUserOptions` is `true`).
 
 1. ```ts
-   loading: boolean = false
+   loading: boolean = false;
    ```
 
    Shows a loading spinner. Useful when fetching options asynchronously.
 
 1. ```ts
-   invalid: boolean = false // bindable
+   invalid: boolean = false; // bindable
    ```
 
    Marks the component as invalid (adds CSS class). Automatically set during form validation.
@@ -247,9 +222,11 @@ These are the core props you'll use in most cases:
 
    ```ts
    async function load_options({ search, offset, limit }) {
-     const response = await fetch(`/api/items?q=${search}&skip=${offset}&take=${limit}`)
-     const { items, total } = await response.json()
-     return { options: items, hasMore: offset + limit < total }
+     const response = await fetch(
+       `/api/items?q=${search}&skip=${offset}&take=${limit}`
+     );
+     const { items, total } = await response.json();
+     return { options: items, hasMore: offset + limit < total };
    }
    ```
 
@@ -283,21 +260,23 @@ These are the core props you'll use in most cases:
    Message shown when `allowUserOptions` is enabled and user can create a new option.
 
 1. ```ts
-   duplicates: boolean = false
+   duplicates: boolean = false;
    ```
 
    Whether to allow selecting the same option multiple times.
 
 <!-- deno-fmt-ignore -->
+
 1. ```ts
-   filterFunc: (opt: Option, searchText: string) => boolean
+   filterFunc: (opt: Option, searchText: string) => boolean;
    ```
 
    Custom function to filter options based on search text. Default filters by label.
 
 <!-- deno-fmt-ignore -->
+
 1. ```ts
-   key: (opt: Option) => unknown
+   key: (opt: Option) => unknown;
    ```
 
    Function to determine option equality. Default compares by lowercased label.
@@ -309,7 +288,7 @@ These are the core props you'll use in most cases:
    Whether to close dropdown after selection. `false` (default) keeps dropdown open for rapid multi-selection. `true` closes after each selection. `'if-mobile'` closes on mobile devices only (screen width below `breakpoint`). `'retain-focus'` closes dropdown but keeps input focused for rapid typing to create custom options from text input (see `allowUserOptions`).
 
 1. ```ts
-   resetFilterOnAdd: boolean = true
+   resetFilterOnAdd: boolean = true;
    ```
 
    Whether to clear search text when an option is selected.
@@ -341,7 +320,7 @@ These are the core props you'll use in most cases:
    Form field name for form submission.
 
 1. ```ts
-   autocomplete: string = 'off'
+   autocomplete: string = "off";
    ```
 
    Browser autocomplete behavior. Usually `'on'` or `'off'`.
@@ -373,31 +352,31 @@ These are the core props you'll use in most cases:
    Minimum selections required before remove buttons appear.
 
 1. ```ts
-   autoScroll: boolean = true
+   autoScroll: boolean = true;
    ```
 
    Whether to keep active option in view when navigating with arrow keys.
 
 1. ```ts
-   breakpoint: number = 800
+   breakpoint: number = 800;
    ```
 
    Screen width (px) that separates 'mobile' from 'desktop' behavior.
 
 1. ```ts
-   highlightMatches: boolean = true
+   highlightMatches: boolean = true;
    ```
 
    Whether to highlight matching text in dropdown options.
 
 1. ```ts
-   parseLabelsAsHtml: boolean = false
+   parseLabelsAsHtml: boolean = false;
    ```
 
    Whether to render option labels as HTML. **Warning:** Don't combine with `allowUserOptions` (XSS risk).
 
 1. ```ts
-   selectedOptionsDraggable: boolean = !sortSelected
+   selectedOptionsDraggable: boolean = !sortSelected;
    ```
 
    Whether selected options can be reordered by dragging.
@@ -405,44 +384,45 @@ These are the core props you'll use in most cases:
 ### Message Props
 
 1. ```ts
-   noMatchingOptionsMsg: string = 'No matching options'
+   noMatchingOptionsMsg: string = "No matching options";
    ```
 
    Message when search yields no results.
 
 1. ```ts
-   duplicateOptionMsg: string = 'This option is already selected'
+   duplicateOptionMsg: string = "This option is already selected";
    ```
 
    Message when user tries to create duplicate option.
 
 1. ```ts
-   defaultDisabledTitle: string = 'This option is disabled'
+   defaultDisabledTitle: string = "This option is disabled";
    ```
 
    Tooltip for disabled options.
 
 1. ```ts
-   disabledInputTitle: string = 'This input is disabled'
+   disabledInputTitle: string = "This input is disabled";
    ```
 
    Tooltip when component is disabled.
 
 1. ```ts
-   removeAllTitle: string = 'Remove all'
+   removeAllTitle: string = "Remove all";
    ```
 
    Tooltip for remove-all button.
 
 1. ```ts
-   removeBtnTitle: string = 'Remove'
+   removeBtnTitle: string = "Remove";
    ```
 
    Tooltip for individual remove buttons.
 
 <!-- deno-fmt-ignore -->
+
 1. ```ts
-   maxSelectMsg: ((current: number, max: number) => string) | null
+   maxSelectMsg: ((current: number, max: number) => string) | null;
    ```
 
    Function to generate "X of Y selected" message. `null` = no message.
@@ -514,61 +494,61 @@ For custom styling with CSS frameworks or one-off styles:
 For use with CSS frameworks like Tailwind:
 
 1. ```ts
-   outerDivClass: string = ''
+   outerDivClass: string = "";
    ```
 
    CSS class for outer wrapper div.
 
 1. ```ts
-   inputClass: string = ''
+   inputClass: string = "";
    ```
 
    CSS class for main input element.
 
 1. ```ts
-   ulSelectedClass: string = ''
+   ulSelectedClass: string = "";
    ```
 
    CSS class for selected options list.
 
 1. ```ts
-   ulOptionsClass: string = ''
+   ulOptionsClass: string = "";
    ```
 
    CSS class for dropdown options list.
 
 1. ```ts
-   liSelectedClass: string = ''
+   liSelectedClass: string = "";
    ```
 
    CSS class for selected option items.
 
 1. ```ts
-   liOptionClass: string = ''
+   liOptionClass: string = "";
    ```
 
    CSS class for dropdown option items.
 
 1. ```ts
-   liActiveOptionClass: string = ''
+   liActiveOptionClass: string = "";
    ```
 
    CSS class for the currently active dropdown option.
 
 1. ```ts
-   liUserMsgClass: string = ''
+   liUserMsgClass: string = "";
    ```
 
    CSS class for user messages (no matches, create option, etc.).
 
 1. ```ts
-   liActiveUserMsgClass: string = ''
+   liActiveUserMsgClass: string = "";
    ```
 
    CSS class for active user messages.
 
 1. ```ts
-   maxSelectMsgClass: string = ''
+   maxSelectMsgClass: string = "";
    ```
 
    CSS class for the "X of Y selected" message.
@@ -726,7 +706,7 @@ import {
   MultiSelectEvents,
   ObjectOption,
   Option,
-} from 'svelte-multiselect'
+} from "svelte-multiselect";
 ```
 
 ## ✨ &thinsp; Styling
