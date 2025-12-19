@@ -893,7 +893,6 @@
       placeholder={selected.length === 0 || alwaysShowPlaceholder ? placeholder : null}
       aria-invalid={invalid ? `true` : null}
       ondrop={() => false}
-      onmouseup={open_dropdown}
       onkeydown={handle_input_keydown}
       onfocus={handle_input_focus}
       onblur={handle_input_blur}

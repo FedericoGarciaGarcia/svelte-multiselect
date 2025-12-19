@@ -6,6 +6,7 @@
 ## 🚀 &thinsp; Updates
 
 - **Update 1:** Added `alwaysShowPlaceholder?: boolean` prop
+- **Update 2:** Do not open dropdown when clicking selected options
 
 ## 🪲 &thinsp; Bug Fixes
 
