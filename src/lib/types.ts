@@ -169,4 +169,5 @@ export interface MultiSelectProps<T extends Option = Option>
   // Pass a function for simple usage, or an object with config for advanced usage
   loadOptions?: LoadOptions<T>
   alwaysShowPlaceholder?: boolean
+  disableSelectedAnimation?: boolean
 }

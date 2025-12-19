@@ -122,6 +122,7 @@
     // Dynamic options loading
     loadOptions,
     alwaysShowPlaceholder = false,
+    disableSelectedAnimation = false,
     ...rest
   }: MultiSelectProps<Option> = $props()
 
@@ -837,7 +838,7 @@
         class={liSelectedClass}
         role="option"
         aria-selected="true"
-        animate:flip={{ duration: 100 }}
+        animate:flip={{ duration: disableSelectedAnimation ? 0 : 100 }}
         draggable={selectedOptionsDraggable && !disabled && selected.length > 1}
         ondragstart={dragstart(idx)}
         ondragover={(event) => {

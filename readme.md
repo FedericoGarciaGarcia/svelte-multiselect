@@ -7,6 +7,7 @@
 
 - **Update 1:** Added `alwaysShowPlaceholder?: boolean` prop
 - **Update 2:** Do not open dropdown when clicking selected options
+- **Update 3:** Added `disableSelectedAnimation?: boolean` prop
 
 ## 🪲 &thinsp; Bug Fixes
 
