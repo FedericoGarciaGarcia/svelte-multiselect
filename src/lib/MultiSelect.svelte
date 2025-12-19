@@ -769,6 +769,14 @@
     const { scrollTop, scrollHeight, clientHeight } = event.target as HTMLElement
     if (scrollHeight - scrollTop - clientHeight <= 100) load_dynamic_options(false)
   }
+
+  // Track if the mouse has moved
+  const lastMousePos = { x: 0, y: 0 };
+
+  window.addEventListener("mousemove", (e) => {
+    lastMousePos.x = e.clientX;
+    lastMousePos.y = e.clientY;
+  });
 </script>
 
 <svelte:window
@@ -1034,7 +1042,15 @@
           class:active
           class:disabled
           class="{liOptionClass} {active ? liActiveOptionClass : ``}"
-          onmouseover={() => {
+          onmouseover={(e) => {
+            // Do not set the active option to the mouse hovered one if the
+            // mouse didn't move. The elements must have shifted positions on
+            // their own
+            const currentMousePos = { x: e.clientX, y: e.clientY };
+            if (currentMousePos.x === lastMousePos.x && currentMousePos.y === lastMousePos.y) {
+              return;
+            }
+
             if (!disabled) activeIndex = idx
           }}
           onfocus={() => {

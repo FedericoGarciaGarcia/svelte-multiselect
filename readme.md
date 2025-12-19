@@ -13,3 +13,4 @@
 
 - **Bug Fix 1:** Search text won't clear when `resetFilterOnAdd={false}`
 - **Bug Fix 2:** Don't render `<li>` message if it's empty
+- **Bug Fix 3:** Don't change active option to the mouse hovered one when scrolling with up/down keys
