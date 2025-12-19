@@ -5,4 +5,8 @@
 
 ## 🚀 &thinsp; Updates
 
+- **Update 1:** Added `alwaysShowPlaceholder?: boolean` prop
+
+## 🪲 &thinsp; Bug Fixes
+
 - **Bug Fix 1:** Search text won't clear when `resetFilterOnAdd={false}`

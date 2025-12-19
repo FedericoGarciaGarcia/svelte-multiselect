@@ -168,4 +168,5 @@ export interface MultiSelectProps<T extends Option = Option>
   // Dynamic options loading for large datasets (https://github.com/janosh/svelte-multiselect/discussions/342)
   // Pass a function for simple usage, or an object with config for advanced usage
   loadOptions?: LoadOptions<T>
+  alwaysShowPlaceholder?: boolean
 }

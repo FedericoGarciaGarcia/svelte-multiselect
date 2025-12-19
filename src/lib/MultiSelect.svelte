@@ -121,6 +121,7 @@
     liSelectAllClass = ``,
     // Dynamic options loading
     loadOptions,
+    alwaysShowPlaceholder = false,
     ...rest
   }: MultiSelectProps<Option> = $props()
 
@@ -889,7 +890,7 @@
       {autocomplete}
       {inputmode}
       {pattern}
-      placeholder={selected.length === 0 ? placeholder : null}
+      placeholder={selected.length === 0 || alwaysShowPlaceholder ? placeholder : null}
       aria-invalid={invalid ? `true` : null}
       ondrop={() => false}
       onmouseup={open_dropdown}
