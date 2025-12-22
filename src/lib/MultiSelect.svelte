@@ -1106,55 +1106,59 @@
         {@const msgType = is_dupe || can_create || no_match}
         {#if msgType}
           {@const msg = {
-        dupe: duplicateOptionMsg,
-        create: createOptionMsg,
-        'no-match': noMatchingOptionsMsg,
-      }[msgType]}
-          <li
-            onclick={(event) => {
-              if (msgType === `create` && allowUserOptions) {
-                add(searchText as Option, event)
-              }
-            }}
-            onkeydown={(event) => {
-              if (
-                msgType === `create` &&
-                allowUserOptions &&
-                (event.key === `Enter` || event.code === `Space`)
-              ) {
-                event.preventDefault()
-                add(searchText as Option, event)
-              }
-            }}
-            title={msgType === `create`
-            ? createOptionMsg
-            : msgType === `dupe`
-            ? duplicateOptionMsg
-            : ``}
-            class:active={option_msg_is_active}
-            onmouseover={() => !ignore_hover && (option_msg_is_active = true)}
-            onfocus={() => (option_msg_is_active = true)}
-            onmouseout={() => (option_msg_is_active = false)}
-            onblur={() => (option_msg_is_active = false)}
-            role="option"
-            aria-selected="false"
-            class="
-              user-msg {liUserMsgClass} {option_msg_is_active
-              ? liActiveUserMsgClass
+            dupe: duplicateOptionMsg,
+            create: createOptionMsg,
+            'no-match': noMatchingOptionsMsg,
+          }[msgType]}
+          <!-- Don't render <li> if message is empty, otherwise the element
+          can take space and looks off -->
+          {#if msg}
+            <li
+              onclick={(event) => {
+                if (msgType === `create` && allowUserOptions) {
+                  add(searchText as Option, event)
+                }
+              }}
+              onkeydown={(event) => {
+                if (
+                  msgType === `create` &&
+                  allowUserOptions &&
+                  (event.key === `Enter` || event.code === `Space`)
+                ) {
+                  event.preventDefault()
+                  add(searchText as Option, event)
+                }
+              }}
+              title={msgType === `create`
+              ? createOptionMsg
+              : msgType === `dupe`
+              ? duplicateOptionMsg
               : ``}
-            "
-            style:cursor={{
-              dupe: `not-allowed`,
-              create: `pointer`,
-              'no-match': `default`,
-            }[msgType]}
-          >
-            {#if userMsg}
-              {@render userMsg({ searchText, msgType, msg })}
-            {:else}
-              {msg}
-            {/if}
-          </li>
+              class:active={option_msg_is_active}
+              onmouseover={() => !ignore_hover && (option_msg_is_active = true)}
+              onfocus={() => (option_msg_is_active = true)}
+              onmouseout={() => (option_msg_is_active = false)}
+              onblur={() => (option_msg_is_active = false)}
+              role="option"
+              aria-selected="false"
+              class="
+                user-msg {liUserMsgClass} {option_msg_is_active
+                ? liActiveUserMsgClass
+                : ``}
+              "
+              style:cursor={{
+                dupe: `not-allowed`,
+                create: `pointer`,
+                'no-match': `default`,
+              }[msgType]}
+            >
+              {#if userMsg}
+                {@render userMsg({ searchText, msgType, msg })}
+              {:else}
+                {msg}
+              {/if}
+            </li>
+          {/if}
         {/if}
       {/if}
       {#if loadOptions && load_options_loading}
