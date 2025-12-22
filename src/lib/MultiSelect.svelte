@@ -441,7 +441,7 @@
         if (selected_keys.includes(key(activeOption))) {
           if (can_remove) {
             remove(activeOption, event)
-            searchText = `` // always clear on remove (resetFilterOnAdd only applies to add operations)
+            if (resetFilterOnAdd) searchText = ``
           }
         } else add(activeOption, event) // add() handles resetFilterOnAdd internally when successful
       } else if (allowUserOptions && searchText.length > 0) {
@@ -529,12 +529,12 @@
       // If no minSelect constraint, remove all
       removed_options = selected
       selected = []
-      searchText = `` // always clear on remove all (resetFilterOnAdd only applies to add operations)
+      if (resetFilterOnAdd) searchText = ``
     } else if (selected.length > minSelect) {
       // Keep the first minSelect items
       removed_options = selected.slice(minSelect)
       selected = selected.slice(0, minSelect)
-      searchText = `` // always clear on remove all (resetFilterOnAdd only applies to add operations)
+      if (resetFilterOnAdd) searchText = ``
     }
     // Only fire events if something was actually removed
     if (removed_options.length > 0) {
