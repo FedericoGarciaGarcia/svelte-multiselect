@@ -3,7 +3,4 @@
   <br class="hide-in-docs">&ensp;<a href="https://github.com/janosh/svelte-multiselect">Svelte MultiSelect</a> + Updates
 </h1>
 
-## 🪲 &thinsp; Bug Fixes
-
-- **Bug Fix 1:** Search text won't clear when `resetFilterOnAdd={false}`
-- **Bug Fix 2:** Don't render `<li>` message if it's empty
+🧪 Alpha of next release.
